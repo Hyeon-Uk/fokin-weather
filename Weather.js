@@ -1,19 +1,72 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { View, Text, StyleSheet } from 'react-native';
-import { Ionicons } from '@expo/vector-icons';
+import { View, Text, StyleSheet,StatusBar } from 'react-native';
+import { MaterialCommunityIcons  } from '@expo/vector-icons';
+import { LinearGradient } from 'expo-linear-gradient';
+
+const weatherOptions={
+    Haze: {
+        iconName: "weather-hail",
+        gradient: ["#4DA0B0", "#D39D38"]
+      },
+      Thunderstorm: {
+        iconName: "",
+        gradient: []
+      },
+      Drizzle: {
+        iconName: "",
+        gradient: []
+      },
+      Rain: {
+        iconName: "",
+        gradient: []
+      },
+      Snow: {
+        iconName: "",
+        gradient: []
+      },
+      Atmosphere: {
+        iconName: "",
+        gradient: []
+      },
+      Clear: {
+        iconName: "",
+        gradient: []
+      },
+      Clouds: {
+        iconName: "",
+        gradient: []
+      },
+      Haze: {
+        iconName: "",
+        gradient: []
+      },
+      Mist: {
+        iconName: "",
+        gradient: []
+      },
+      Dust: {
+        iconName: "",
+        gradient: []
+      }
+};
 
 export default function Weather({ temp, condition }) {
     return (
-        <View style={styles.container}>
+            <LinearGradient
+                style={styles.container}
+                colors={['rgba(0,0,0,0.8)', 'transparent']}
+            >
+            <StatusBar barStyle="light-content"></StatusBar>
             <View style={styles.halfContainer}>
-                <Ionicons name="rainy-outline" size={96}/>
+
+                <MaterialCommunityIcons name={weatherOptions[condition].iconName} size={96} color="white" />
                 <Text style={styles.temp}>{temp}</Text>
             </View>
             <View style={styles.halfContainer}>
 
             </View>
-        </View>
+            </LinearGradient>
     );
 }
 
@@ -33,7 +86,8 @@ const styles = StyleSheet.create({
         alignItems: "center",
         justifyContent: "center"
     },
-    temp:{
-        fontSize:42
+    temp: {
+        fontSize: 42,
+        color:"white"
     }
 });
